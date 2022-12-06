@@ -1,0 +1,17 @@
+{
+    "name":"Pass Saver",
+    "version":"1.0",
+    "manifest_version":2,
+    "browser_action":
+        {
+            "default_popup":"Popup.html",
+            "default_icon":"logo.png"
+        } ,
+    "icons":{
+        "128":"logo.png"
+    },
+    "permissions":["activeTab"],
+    "web_accessible_resources": [
+        "C:/Users/Lenovo/Desktop/PassSaver/style.css"
+  ]
+}
