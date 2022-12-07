@@ -1,67 +1,95 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 html{
-    background-color: rgb(230, 193, 196);
+  width: 400px;
+  height: 250px;
 }
-.popup-box
-{
-    padding: 10px;
-    font-size: 16px;
-    min-width: 150px;
-    width: 300px;
-    height:95px;
-    box-shadow: rgba(red, green, blue, alpha);
-}
-/* Input Type For Username And Password */
-input{
-    width: 80%;
-    border: 4px solid #83798e;
-    border-radius: 5px;  
-    /* box-sizing: border-box;   */
-}
-/* Button CSS*/
-.save {
-    align-items: center;
-    background-color: #0A66C2;
-    border: 0;
-    border-radius: 100px;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 20px;
-    max-width: 480px;
-    min-height: 40px;
-    min-width: 0px;
-    overflow: hidden;
-    padding: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-    touch-action: manipulation;
-    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    margin: 20px;
-    margin-left: 170px;
+#bg {
+  background-image: url('img/background.jpg');
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  filter: blur(5px);
 }
 
-.save:hover,
-.save:focus { 
-  background-color: #16437E;
-  color: #ffffff;
+body {
+  font-family: 'Lato', sans-serif;
+  color: #4A4A4A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.save:active {
-  background: #09223b;
-  color: rgb(255, 255, 255, .7);
+form {
+  width: 350px;
+  position: relative;
 }
-
-.save:disabled { 
-  cursor: not-allowed;
-  background: rgba(0, 0, 0, .08);
-  color: rgba(0, 0, 0, .3);
+form .form-field::before {
+  font-size: 20px;
+  position: absolute;
+  left: 15px;
+  top: 17px;
+  color: #888888;
+  content: " ";
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+form .form-field:nth-child(1)::before {
+  background-image: url(img/user-icon.png);
+  width: 20px;
+  height: 20px;
+  top: 15px;
+}
+form .form-field:nth-child(2)::before {
+  background-image: url(img/lock-icon.png);
+  width: 16px;
+  height: 16px;
+}
+form .form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+form input {
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  background-color: #fff;
+  border-radius: 4px;
+  border: none;
+  display: block;
+  padding: 0.9rem 0.7rem;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px;
+  color: #4A4A4A;
+  text-indent: 40px;
+}
+form .btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.9rem 2.5rem;
+  text-align: center;
+  background-color: #2a32c6;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px;
 }
