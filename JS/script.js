@@ -8,18 +8,23 @@ chrome.tabs.query(
     },
     function(tabs) 
     {
+    var domain;
     var mainUrl = tabs[0].url;
-    var expression = "http[s]?:\/\/www.[a-z]*.[com|in]*"    
-    const regex = new RegExp(expression)
-    url = mainUrl.match(expression)[0]
-    urlbolck.innerHTML=`<a href="${mainUrl}">${url}</a>`
+    if (mainUrl.indexOf("://") > -1)
+    {
+        domain = mainUrl.split('/')[2];
+    } 
+    else
+    {
+        domain = mainUrl.split('/')[0];
+    }    
+    urlbolck.innerHTML=`<a href="${mainUrl}">www.${domain}</a>`
 })
 
 window.onload = (event) => {
 savepassword.addEventListener('click',(e)=>
 {   
     e.preventDefault()
-    console.log("INSIDE JS FUNCTION",savepassword)
     
     //Getting value of text Field Of UserName
     const username=document.getElementById('email').value;
@@ -49,5 +54,5 @@ savepassword.addEventListener('click',(e)=>
             url:url
         })
     }   
-})
+})    
 }
