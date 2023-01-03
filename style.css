@@ -99,7 +99,8 @@ form .btn {
   font-size: medium;
   margin-top: 20px;
 }
-#download_file
+#download_file:hover
 {
   cursor: pointer;
+  color: #2a32c6;
 }
