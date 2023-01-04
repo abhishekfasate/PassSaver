@@ -94,6 +94,21 @@ form .btn {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   font-size: 17px;
 }
+form .btn:hover{
+  background-color: #4e56ec;
+}
+form .btn:active
+{
+  background-color: #2a32c6;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+form .btn:disabled
+{
+  color: black;
+  background-color:  rgb(150, 150, 150);
+  cursor: not-allowed;
+}
 #get-link
 {
   font-size: medium;
@@ -103,4 +118,9 @@ form .btn {
 {
   cursor: pointer;
   color: #2a32c6;
+}
+#download_file:active
+{
+  background-color: #2a32c6;
+  transform: translateY(2px);
 }

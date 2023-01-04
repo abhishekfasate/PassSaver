@@ -1,5 +1,7 @@
 const savepassword=document.getElementById('submitbtn')
 const urlbolck=document.getElementById('url')
+const usernameField = document.getElementById('email');
+const passwordField = document.getElementById('password');
 
 //Getting the URL name to make sure to save the password for particular site
 chrome.tabs.query(
@@ -21,18 +23,32 @@ chrome.tabs.query(
     urlbolck.innerHTML=`<a href="${mainUrl}">www.${domain}</a>`
 })
 
+//Submit button should be disabled if textfield is empty
+ usernameField && passwordField.addEventListener("keyup",(e)=>
+ {
+            const value = e.target.value;
+            savepassword.disabled=false
+            if(value==="")
+            {
+                savepassword.disabled=true
+            }
+ })
+
+/*On load of extension and click on savepassword button add username and password to the 
+  the database using CryptoJS encryption
+*/
 window.onload = (event) => {
 savepassword.addEventListener('click',(e)=>
 {   
     e.preventDefault()
     
     //Getting value of text Field Of UserName
-    const username=document.getElementById('email').value;
+    const username=usernameField.value;
     var encrypted_username = CryptoJS.AES.encrypt(username,username)
     encrypted_username = encrypted_username.toString();
 
     //Getting value of text Field Of Password
-    const password=document.getElementById('password').value;
+    const password=passwordField.value;
     var encrypted_password = CryptoJS.AES.encrypt(password,username);
     encrypted_password = encrypted_password.toString();
     
@@ -55,11 +71,16 @@ savepassword.addEventListener('click',(e)=>
         store.put({
             username:encrypted_username,
             password:encrypted_password,
+            // username:username,
+            // password:password,
             url:url
         })
     }   
 
-    document.getElementById('email').value = ""
-    document.getElementById('password').value = ""
+    //text-box should be empty after data store in database
+
+    usernameField.value = ""
+    passwordField.value = ""
 })    
 }
+
