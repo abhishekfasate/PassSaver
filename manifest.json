@@ -10,9 +10,11 @@
     "background":
     {
         "script":[
-            "/JS/script.js"
+            "/JS/script.js",
+            "/crypto-js/crypto-js.js"
         ]
     },
+    "content_security_policy":"img-src https://cdnjs.cloudflare.com ",
     "icons":{
         "128":"logo.png"
     },

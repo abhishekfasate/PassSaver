@@ -28,9 +28,13 @@ savepassword.addEventListener('click',(e)=>
     
     //Getting value of text Field Of UserName
     const username=document.getElementById('email').value;
-    
+    var encrypted_username = CryptoJS.AES.encrypt(username,username)
+    encrypted_username = encrypted_username.toString();
+
     //Getting value of text Field Of Password
     const password=document.getElementById('password').value;
+    var encrypted_password = CryptoJS.AES.encrypt(password,username);
+    encrypted_password = encrypted_password.toString();
     
     //Getting value of Url from the innertext field of the URL
     const url =document.getElementById('url').innerText
@@ -49,10 +53,13 @@ savepassword.addEventListener('click',(e)=>
         let tx=res.transaction('data','readwrite')
         let store=tx.objectStore('data')
         store.put({
-            username:username,
-            password:password,
+            username:encrypted_username,
+            password:encrypted_password,
             url:url
         })
     }   
+
+    document.getElementById('email').value = ""
+    document.getElementById('password').value = ""
 })    
 }
