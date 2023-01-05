@@ -2,6 +2,7 @@ const savepassword=document.getElementById('submitbtn')
 const urlbolck=document.getElementById('url')
 const usernameField = document.getElementById('email');
 const passwordField = document.getElementById('password');
+const togglePassword = document.getElementById('togglePassword');
 
 //Getting the URL name to make sure to save the password for particular site
 chrome.tabs.query(
@@ -20,8 +21,11 @@ chrome.tabs.query(
     {
         domain = mainUrl.split('/')[0];
     }    
-    urlbolck.innerHTML=`<a href="${mainUrl}">www.${domain}</a>`
+    urlbolck.innerHTML=`<a href="${mainUrl}">${domain}</a>`
 })
+
+//  toggle Eye button password in version 10 we are using this button as decrypt button
+eyeIcon()
 
 //Submit button should be disabled if textfield is empty
  usernameField && passwordField.addEventListener("keyup",(e)=>
@@ -71,8 +75,6 @@ savepassword.addEventListener('click',(e)=>
         store.put({
             username:encrypted_username,
             password:encrypted_password,
-            // username:username,
-            // password:password,
             url:url
         })
     }   
@@ -84,3 +86,13 @@ savepassword.addEventListener('click',(e)=>
 })    
 }
 
+function eyeIcon() 
+{
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye');
+});
+}
